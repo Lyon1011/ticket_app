@@ -12,7 +12,6 @@ class TicketView extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return SizedBox(
         width: size.width * 0.85,
-        height: 179,
         child: Container(
           margin: const EdgeInsets.only(right: 16),
           child: Column(
@@ -93,6 +92,21 @@ class TicketView extends StatelessWidget {
                         ],
                       ),
                     ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20,
+                child: Expanded(child: Container(color: AppStyles.ticketOrange, child: AppLayoutBuilderWidget(randomDivider: 10),)),
+              ),
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    color: AppStyles.ticketOrange,
+                    borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(21),
+                        bottomRight: Radius.circular(21))),
+                child: Column(
+                  children: [
                     Container(
                       child: Column(
                         children: [
@@ -159,7 +173,7 @@ class TicketView extends StatelessWidget {
                           )
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
