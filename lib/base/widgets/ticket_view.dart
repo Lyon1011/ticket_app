@@ -10,7 +10,8 @@ import '../res/styles/app_styles.dart';
 
 class TicketView extends StatelessWidget {
   final Map<String, dynamic> ticket;
-  const TicketView({super.key, required this.ticket});
+  final bool wholeScreen;
+  const TicketView({super.key, required this.ticket, this.wholeScreen = false});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class TicketView extends StatelessWidget {
     return SizedBox(
         width: size.width * 0.85,
         child: Container(
-          margin: const EdgeInsets.only(right: 16),
+          margin: EdgeInsets.only(right: wholeScreen ? 0 : 16),
           child: Column(
             children: [
               // ticket's blue part
@@ -69,15 +70,18 @@ class TicketView extends StatelessWidget {
                           Row(
                             children: [
                               SizedBox(
-                                width: 100,
-                                child: TextStyleFourth(text: ticket['from']['name'])
-                              ),
+                                  width: 100,
+                                  child: TextStyleFourth(
+                                      text: ticket['from']['name'])),
                               Expanded(child: Container()),
                               TextStyleFourth(text: ticket['flying_time']),
                               Expanded(child: Container()),
                               SizedBox(
                                 width: 100,
-                                child: TextStyleFourth(text: ticket['to']['name'], align: TextAlign.end,),
+                                child: TextStyleFourth(
+                                  text: ticket['to']['name'],
+                                  align: TextAlign.end,
+                                ),
                               )
                             ],
                           )
@@ -95,28 +99,40 @@ class TicketView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     BigCircle(isRight: false),
-                    Expanded(child: AppLayoutBuilderWidget(randomDivider: 16, width: 6,)),
+                    Expanded(
+                        child: AppLayoutBuilderWidget(
+                      randomDivider: 16,
+                      width: 6,
+                    )),
                     BigCircle(isRight: true)
                   ],
                 ),
               ),
               // ticket's orange part
               Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                    color: AppStyles.ticketOrange,
-                    borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(21),
-                        bottomRight: Radius.circular(21))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    AppColumnTextLayout(topText: ticket['date'], bottomText: 'Date', alignment: CrossAxisAlignment.start),
-                    AppColumnTextLayout(topText: ticket['departure_time'], bottomText: 'Departure Time', alignment: CrossAxisAlignment.center),
-                    AppColumnTextLayout(topText: ticket['number'].toString(), bottomText: 'Number', alignment: CrossAxisAlignment.end),
-                  ],
-                )
-              ),
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                      color: AppStyles.ticketOrange,
+                      borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(21),
+                          bottomRight: Radius.circular(21))),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      AppColumnTextLayout(
+                          topText: ticket['date'],
+                          bottomText: 'Date',
+                          alignment: CrossAxisAlignment.start),
+                      AppColumnTextLayout(
+                          topText: ticket['departure_time'],
+                          bottomText: 'Departure Time',
+                          alignment: CrossAxisAlignment.center),
+                      AppColumnTextLayout(
+                          topText: ticket['number'].toString(),
+                          bottomText: 'Number',
+                          alignment: CrossAxisAlignment.end),
+                    ],
+                  )),
             ],
           ),
         ));
