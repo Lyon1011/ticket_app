@@ -20,10 +20,11 @@ class AppDoubleText extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (BuildContext context) => const AllTickets()));
+            // Navigator.push(
+            //    context,
+            //    MaterialPageRoute(
+            //        builder: (BuildContext context) => const AllTickets()));
+            Navigator.pushNamed(context, "all_ticket");
           },
           child: Text(
             smallText,
