@@ -12,8 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const BottomNavBar(),
-      routes: {'all_tickets': (BuildContext context) => const AllTickets()},
+      routes: {
+        '/': (context) => const BottomNavBar(),
+        '/all_tickets': (context) => const AllTickets()
+      },
     );
   }
 }
